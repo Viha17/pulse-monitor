@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/*
+ * Pulse: a catalog of signals.
+ * Matte black stock, white hairline ink, zero radius.
+ * Colour is a code, never decoration: white up, red down, yellow pending, grey paused, blue selection.
+ */
+@theme {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-martian), ui-monospace, monospace;
+
+  --color-ground: #0c0c0c;
+  --color-ground-raised: #141413;
+  --color-ink: #ececea;
+  --color-ink-2: #a8a8a4;
+  --color-ink-3: #7f7f79; /* ≈4.9:1 on ground, clears 4.5:1 for small text */
+  --color-rule: #2c2c2a;
+  --color-rule-2: #474744;
+
+  --color-up: #ececea;
+  --color-down: #f04a2e;
+  --color-pending: #f2b705;
+  --color-paused: #6b6b67;
+  --color-signal: #2f5bea;
+
+  --radius-none: 0;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-ground);
+  }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+  a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  input,
+  select,
+  textarea {
+    caret-color: var(--color-down);
+  }
+  /* Square 1px checkbox that fills with a solid block when checked. */
+  input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    border: 1px solid var(--color-ink-3);
+    background: var(--color-ground);
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: border-color 120ms ease-out;
+  }
+  input[type="checkbox"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: var(--color-ink);
+    transform: scale(0);
+    transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  input[type="checkbox"]:checked {
+    border-color: var(--color-ink);
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+  input[type="checkbox"]:hover {
+    border-color: var(--color-ink);
+  }
+  /* Selects lose the native chevron for an authored square one. */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a8a8a4' stroke-width='2' stroke-linecap='square'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px !important;
+  }
+  option {
+    background: var(--color-ground);
+    color: var(--color-ink);
+  }
+  * {
+    scrollbar-color: var(--color-rule-2) var(--color-ground);
+    scrollbar-width: thin;
+  }
+}
+
+/* Wide tracked capitals: the catalog's labelling voice. */
+@utility caps {
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Expanded display voice for catalog numbers and verdicts. */
+@utility display {
+  font-variation-settings: "wdth" 125;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+@utility num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-variation-settings: "wdth" 100;
+}
+
+@utility field {
+  width: 100%;
+  border: 1px solid var(--color-rule-2);
+  background-color: var(--color-ground);
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--color-ink);
+  transition: border-color 120ms ease-out;
+  &::placeholder {
+    color: var(--color-ink-3);
+  }
+  &:hover {
+    border-color: var(--color-ink-3);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--color-ink);
+  }
+}
+
+/* Outlined square controls. The primary action carries a red end bar, like the sleeve's active button. */
+@utility control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--color-rule-2);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color 120ms ease-out,
+    background-color 120ms ease-out;
+  &:hover {
+    border-color: var(--color-ink);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}
+
+@utility control-primary {
+  @apply control;
+  position: relative;
+  border-color: var(--color-ink);
+  padding-right: 44px;
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    width: 28px;
+    background: var(--color-down);
+    transition: width 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover::after {
+    width: 34px;
+  }
+}
+
+@utility control-danger {
+  @apply control;
+  color: var(--color-down);
+  &:hover {
+    border-color: var(--color-down);
+  }
+}
+
+@utility control-sm {
+  min-height: 32px;
+  padding: 0 12px;
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}

@@ -1,0 +1,26 @@
+node_modules/
+.next/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+.env
+.env.local
+!.env.example
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/
+
+# Impeccable design-session scratch (decision server, sketches, captures)
+**/.impeccable/questions/
+**/.impeccable/mocks/
+**/.impeccable/review/
+**/.impeccable/ref/
+**/.impeccable/build/
+**/.impeccable/*.json
+**/.impeccable/brief-body.md
+!**/.impeccable/design.json

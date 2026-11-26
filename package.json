@@ -1,0 +1,28 @@
+{
+  "name": "pulse-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Self-hosted uptime monitoring with alerts and a public status page.",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,worker -c cyan,magenta \"npm run dev -w @pulse/web\" \"npm run dev -w @pulse/worker\"",
+    "build": "npm run build -w @pulse/web",
+    "start": "concurrently -n web,worker -c cyan,magenta \"npm run start -w @pulse/web\" \"npm run start -w @pulse/worker\"",
+    "db:generate": "npm run generate -w @pulse/core",
+    "db:migrate": "npm run migrate -w @pulse/core",
+    "test": "npm run test -w @pulse/worker",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.4",
+    "concurrently": "^10.0.7",
+    "typescript": "^5.9.3"
+  }
+}

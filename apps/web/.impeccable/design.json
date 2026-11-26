@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T07:43:39Z",
+  "title": "Design System: Pulse",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Matte Black", "canonical": "#0c0c0c", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "ground-raised": { "role": "neutral", "displayName": "Raised Black", "canonical": "#141413", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "ink": { "role": "neutral", "displayName": "Sleeve White", "canonical": "#ececea", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "ink-2": { "role": "neutral", "displayName": "Ash", "canonical": "#a8a8a4", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "ink-3": { "role": "neutral", "displayName": "Smoke", "canonical": "#7f7f79", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "rule": { "role": "neutral", "displayName": "Hairline", "canonical": "#2c2c2a", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "rule-2": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "#474744", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "up": { "role": "neutral", "displayName": "Up White", "canonical": "#ececea", "tonalRamp": ["#0c0c0c", "#141413", "#2c2c2a", "#474744", "#6b6b67", "#7f7f79", "#a8a8a4", "#ececea"] },
+      "down": { "role": "primary", "displayName": "Sleeve Red", "canonical": "#f04a2e", "tonalRamp": ["#2a0a05", "#521208", "#7f1d0e", "#b02a15", "#f04a2e", "#f5765f", "#f9a798", "#fcd8d1"] },
+      "pending": { "role": "secondary", "displayName": "Pending Yellow", "canonical": "#f2b705", "tonalRamp": ["#2a1f01", "#4f3a02", "#7a5903", "#a87b04", "#f2b705", "#f6ca45", "#f9dc85", "#fcefc6"] },
+      "paused": { "role": "secondary", "displayName": "Paused Grey", "canonical": "#6b6b67", "tonalRamp": ["#141413", "#262624", "#3a3a37", "#525250", "#6b6b67", "#8c8c88", "#b4b4b0", "#dcdcd9"] },
+      "signal": { "role": "secondary", "displayName": "Signal Blue", "canonical": "#2f5bea", "tonalRamp": ["#070f2b", "#0e1d55", "#162d84", "#2042bd", "#2f5bea", "#6385f0", "#9db2f5", "#d3ddfa"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Verdict sentence on the dashboard; the status page sets it larger at clamp(2.5rem, 7vw, 5.5rem)." },
+      "display-catalog": { "displayName": "Display Catalog", "purpose": "The catalog number heading a monitor's page, red when down." },
+      "title": { "displayName": "Title", "purpose": "Monitor name under its catalog number, uppercase." },
+      "body": { "displayName": "Body", "purpose": "Reading text; paragraphs cap at 52-60ch." },
+      "body-sm": { "displayName": "Body Small", "purpose": "Row secondary lines, form help, error messages." },
+      "label": { "displayName": "Label", "purpose": "Tracked uppercase labels beside values and on section rules; never a kicker above a heading." },
+      "mono": { "displayName": "Mono", "purpose": "Catalog numbers in lists, URLs, timestamps, chart labels. 11px is the floor." },
+      "mono-value": { "displayName": "Mono Value", "purpose": "Readings in tables and spec lists." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-out-quick", "value": "120ms ease-out", "purpose": "Border and background changes on controls, fields, checkboxes, rows." },
+      { "name": "ease-expo-out", "value": "160ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Primary control's red end bar widening on hover; checkbox fill scale-in (120ms)." },
+      { "name": "reduced-motion", "value": "0ms", "purpose": "prefers-reduced-motion zeroes every transition and animation." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Control",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action per view: outlined square control with a red end bar that widens on hover.",
+      "html": "<button class=\"ds-control-primary\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" aria-hidden=\"true\"><path d=\"M12 4v16M4 12h16\"/></svg>Add monitor</button>",
+      "css": ".ds-control-primary { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 40px; padding: 0 44px 0 16px; border: 1px solid #ececea; border-radius: 0; background: transparent; color: #ececea; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; cursor: pointer; } .ds-control-primary::after { content: \"\"; position: absolute; top: -1px; right: -1px; bottom: -1px; width: 28px; background: #f04a2e; transition: width 160ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-control-primary:hover::after { width: 34px; } .ds-control-primary:focus-visible { outline: 1px solid #ececea; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Control",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined square control for ordinary actions (Cancel, Edit, Pause).",
+      "html": "<button class=\"ds-control\">Edit</button>",
+      "css": ".ds-control { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 40px; padding: 0 16px; border: 1px solid #474744; border-radius: 0; background: transparent; color: #ececea; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: border-color 120ms ease-out; } .ds-control:hover { border-color: #ececea; } .ds-control:focus-visible { outline: 1px solid #ececea; outline-offset: 3px; } .ds-control:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Danger Control",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive action: red label, border turns red on hover.",
+      "html": "<button class=\"ds-control-danger\">Delete</button>",
+      "css": ".ds-control-danger { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 16px; border: 1px solid #474744; border-radius: 0; background: transparent; color: #f04a2e; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: border-color 120ms ease-out; } .ds-control-danger:hover { border-color: #f04a2e; } .ds-control-danger:focus-visible { outline: 1px solid #ececea; outline-offset: 3px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square 1px field on the ground with a red caret; technical inputs are set in mono.",
+      "html": "<input class=\"ds-field\" placeholder=\"https://api.example.com/health\" />",
+      "css": ".ds-field { width: 100%; border: 1px solid #474744; border-radius: 0; background: #0c0c0c; padding: 10px 12px; font-family: \"Martian Mono\", ui-monospace, monospace; font-size: 14px; color: #ececea; caret-color: #f04a2e; transition: border-color 120ms ease-out; } .ds-field::placeholder { color: #7f7f79; } .ds-field:hover { border-color: #7f7f79; } .ds-field:focus { outline: none; border-color: #ececea; }"
+    },
+    {
+      "name": "Rail Navigation",
+      "kind": "nav",
+      "refersTo": "nav-item-active",
+      "description": "Tracked-caps rail items; the active one inverts to white with a red end bar.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-active\" href=\"#\">Monitors<span class=\"ds-nav-bar\"></span></a><a class=\"ds-nav-item\" href=\"#\">Alerts</a><a class=\"ds-nav-item\" href=\"#\">Status page</a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 1px; width: 216px; background: #0c0c0c; } .ds-nav-item { position: relative; display: flex; align-items: center; height: 40px; padding: 0 12px; color: #a8a8a4; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav-item:hover { background: #141413; color: #ececea; } .ds-nav-item:focus-visible { outline: 1px solid #ececea; outline-offset: 3px; } .ds-nav-active, .ds-nav-active:hover { background: #ececea; color: #0c0c0c; padding-right: 40px; } .ds-nav-bar { position: absolute; top: 0; bottom: 0; right: 0; width: 6px; background: #f04a2e; }"
+    },
+    {
+      "name": "State Tag",
+      "kind": "chip",
+      "refersTo": "state-block",
+      "description": "Solid state block plus the state word; the word takes its state colour except for up.",
+      "html": "<span class=\"ds-tag\"><span class=\"ds-block\" style=\"background:#ececea\"></span>Up</span> <span class=\"ds-tag\" style=\"color:#f04a2e\"><span class=\"ds-block\" style=\"background:#f04a2e\"></span>Down</span> <span class=\"ds-tag\" style=\"color:#f2b705\"><span class=\"ds-block\" style=\"background:#f2b705\"></span>Pending</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; gap: 10px; margin-right: 24px; color: #ececea; font-family: Archivo, ui-sans-serif, system-ui, sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; } .ds-block { display: inline-block; width: 8px; height: 8px; flex-shrink: 0; }"
+    },
+    {
+      "name": "Signal Readout",
+      "kind": "custom",
+      "refersTo": "check-block",
+      "description": "Last 24 checks as countable blocks: white passed, red failed, outlined empty slot.",
+      "html": "<div class=\"ds-readout\"><span class=\"ds-slot\"></span><span class=\"ds-slot\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk ds-fail\"></span><span class=\"ds-chk ds-fail\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span><span class=\"ds-chk\"></span></div>",
+      "css": ".ds-readout { display: flex; align-items: center; gap: 3px; } .ds-chk { width: 7px; height: 12px; background: #ececea; } .ds-fail { background: #f04a2e; } .ds-slot { width: 7px; height: 12px; box-sizing: border-box; border: 1px solid #474744; }"
+    },
+    {
+      "name": "State Strip",
+      "kind": "custom",
+      "refersTo": "state-block",
+      "description": "All five code colours, the current state lit and the rest at 18%, so the code decodes itself.",
+      "html": "<span class=\"ds-strip\"><span style=\"background:#6b6b67;opacity:.18\"></span><span style=\"background:#2f5bea;opacity:.18\"></span><span style=\"background:#f2b705;opacity:.18\"></span><span style=\"background:#f04a2e\"></span><span style=\"background:#ececea;opacity:.18\"></span></span>",
+      "css": ".ds-strip { display: inline-flex; gap: 6px; } .ds-strip > span { display: block; width: 28px; height: 10px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pulsar Sleeve",
+    "overview": "Pulse is a catalog of signals printed on a Factory Records sleeve. Every monitor is a numbered entry (PLS 001, PLS 002) and its response times are drawn as white hairlines on matte black stock. The system is flat, ruled and square: 1px lines separate things, outlined controls invite action, and nothing is rounded, lifted or tinted. Surfaces are not boxed into cards; the page is a printed sheet divided by rules.\n\nColour is a code, not decoration. White means up, red means down, yellow means pending, grey means paused, blue means selection and \"now\". Colour appears as small solid blocks, as a hairline in a chart, as a catalog number set in red, and as the red end bar on the active control. Everything else is ink on black. This is an Operate-mode instrument: dense where it reports, quiet where it waits, and readable at a glance. The public status page is the same sleeve tuned for non-technical readers, with a larger verdict and one row of days per service.\n\nThe type does the identity work. Archivo at its expanded width (wdth 125) sets catalog numbers and verdict sentences; Archivo at normal width carries reading text; Martian Mono carries every measurement, timestamp, URL and code; wide tracked capitals label things that sit beside values. The rejected category default is the rounded zinc card dashboard with KPI tiles, green pills and sparklines.",
+    "keyCharacteristics": [
+      "Matte near-black ground, white hairline ink, zero radius everywhere.",
+      "A five-colour state code (white, red, yellow, grey, blue), each colour owning exactly one meaning.",
+      "Catalog numbering (PLS 000) as the identity device for every monitor.",
+      "Expanded display type for numbers and verdicts; monospace for every measurement.",
+      "Hand-built SVG instruments (stacked ridgeline, 24-hour dial, check blocks, day blocks) with HTML labels.",
+      "Flat: depth comes from rules and occlusion, never from shadow."
+    ],
+    "rules": [
+      { "name": "The Colour Is A Code Rule", "body": "Each signal colour has one meaning and only that meaning. Red is down, yellow is pending, grey is paused, blue is selection or now. A colour never decorates, and no meaning borrows another's colour.", "section": "colors" },
+      { "name": "The White Means Healthy Rule", "body": "Passed checks, up states and healthy days are white, not green. Uptime percentages on an UP monitor are never coloured red, however low they read; a red number means the monitor is down.", "section": "colors" },
+      { "name": "The Self-Decoding Code Rule", "body": "Wherever colour carries state, a label or legend travels with it (state tags pair a block with a word, the state strip shows all five colours with the current one lit, day blocks carry a legend). Colour is never the only signal.", "section": "colors" },
+      { "name": "The Measured Things Are Mono Rule", "body": "Every number that was measured or counted (response time, uptime, timestamp, status code, catalog number, URL) is Martian Mono with tabular figures. Prose and names are Archivo.", "section": "typography" },
+      { "name": "The Eleven Pixel Floor Rule", "body": "No text renders below 11px. Chart labels are HTML positioned beside or over the SVG, never SVG text that scales with the viewBox.", "section": "typography" },
+      { "name": "The Caps Sit Beside Rule", "body": "Tracked capitals label a value or open a ruled section; they never stack above a heading as a kicker.", "section": "typography" },
+      { "name": "The Printed Sheet Rule", "body": "Nothing floats. Separate with a rule, emphasise with a heavier rule, respond to hover with the raised wash. No shadow, blur, gradient or glow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every corner square (0) and every border 1px.",
+      "Do give each state colour exactly one meaning: Sleeve Red down, Pending Yellow pending, Paused Grey paused, Signal Blue selection and now.",
+      "Do draw passed checks, up states and healthy days in white.",
+      "Do pair every colour signal with a word or legend.",
+      "Do set every measurement, timestamp, URL and catalog number in Martian Mono with tabular figures.",
+      "Do number monitors as catalog entries (PLS 001) and use the number as their identity in lists, charts and headings.",
+      "Do mark the primary action with the red end bar, and only one per view.",
+      "Do label charts with HTML at 11px or larger, positioned beside the SVG.",
+      "Do break chart lines where there is no data and collapse long empty stretches into a labelled double slash.",
+      "Do state the verdict as a sentence in expanded display type."
+    ],
+    "donts": [
+      "Don't round anything, add shadows, gradients or glows.",
+      "Don't use green for healthy, or colour an UP monitor's uptime number red.",
+      "Don't use yellow for warnings that are not the pending state, or grey for anything but paused.",
+      "Don't box content into cards or KPI tiles; divide with rules.",
+      "Don't set text below 11px or use scaled SVG text for labels.",
+      "Don't put tracked capitals above a heading as a kicker.",
+      "Don't use the six-column catalog table below 1280px.",
+      "Don't draw a flat line across a period with no checks."
+    ]
+  }
+}
